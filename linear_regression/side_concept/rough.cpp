@@ -1,16 +1,19 @@
 #include <iostream>
-#include <armadillo>
+#include<armadillo>
+// #include "function_decleration.hpp"
+#include"utklearn.hpp"
+using namespace utk;
 
 using namespace arma;
 using namespace std;
 
 int main() {
-    mat A = {1, 2, 3};
-    
+    arma::rowvec a = {1, 4, 10};
+    arma::rowvec b = {1, 2, 3};
 
-    A.print("matrix");
-    cout<<"rows::"<<A.n_rows<<endl;
-    cout<<"cols::"<<A.n_cols<<endl;
+    double error = utk::absolute_error(a, b);
+
+    std::cout<<"absolute"<<error<<endl;
 
     return 0;
 }

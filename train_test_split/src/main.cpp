@@ -8,7 +8,7 @@ using namespace utk;
 int main(){
     arma::mat data, X_train, X_test, y_train, y_test;
     arma::field<std::string> headers;
-    bool load_status = data.load(arma::csv_name("/home/kumar/Desktop/mlpack coding/train_test_split/data/mainData.csv", headers));
+    bool load_status = data.load(arma::csv_name("/home/kumar/Desktop/mlpack_function_practice/train_test_split/data/mainData.csv", headers, arma::csv_opts::trans));
 
     // data = arma::trans(data);
     train_test_split(data, X_train, X_test, y_train, y_test, 20);

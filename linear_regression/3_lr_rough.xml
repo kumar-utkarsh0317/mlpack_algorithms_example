@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cereal>
-	<model>
+	<model_rough>
 		<cereal_class_version>0</cereal_class_version>
 		<parameters>
 			<n_rows>5</n_rows>
@@ -14,6 +14,6 @@
 		</parameters>
 		<lambda>0</lambda>
 		<intercept>true</intercept>
-	</model>
+	</model_rough>
 </cereal>
 
