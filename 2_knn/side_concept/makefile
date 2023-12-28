@@ -10,7 +10,7 @@ all: rough
 # Target for building the executable '1_lr_train'
 # her we define how targets should be made
 rough: rough.cpp
-	$(CXX) $(HEADER_PATH) rough.cpp -o rough $(LIB_DEPENDENCIES) -lutklearn
+	$(CXX) $(HEADER_PATH) rough.cpp -o rough -lutklearn $(LIB_DEPENDENCIES) 
 
 # Target for running the executable
 # If you run make run, it will check whether the 1_lr_train executable is up-to-date. If the 1_lr_train executable is not up-to-date (either it doesn't exist or the source file 1_lr_train.cpp has been modified), it will first build the 1_lr_train target and then execute the 

@@ -7,21 +7,15 @@ using namespace std;
 
 
 int main(){
-    string path = "/home/kumar/Desktop/mlpack_function_practice/datasets/Iris.csv";
-    arma::mat data;
-    arma::field<string> headers;
-    arma::field<string> headers1 = {"rahul", "utl"};
-    bool load_status = data.load(arma::csv_name(path, headers));
-    data.shed_col(data.n_cols -1);
-    if(!load_status)
-    {
-        cout<<"no data is loaded"<<endl;
-    }
-    for (string s : headers)
-    {
-        cout<<s<<endl;
-    }
-    data.print();
+    arma::mat v = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+    utk::normalize_features(v);
+    v.print("this is the  normalized one::");
+
+
 
     
 }

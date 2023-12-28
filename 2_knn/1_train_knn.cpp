@@ -12,16 +12,10 @@ int main(int argc, char**argv){
     }
 
     //loading the data 
-    std::cout<<"we are loading the from the file::"<<argv[1]<<std::endl;
+    std::cout<<"\nwe are loading the from the file::"<<argv[1]<<std::endl;
     arma::mat data, X_train, X_test, y_train, y_test;
     arma::field<std::string> headers;
-
     bool load_status = data.load(arma::csv_name(argv[1], headers, arma::csv_opts::trans));
-    //last row contains the string so its numeric value stored will be 0
-    // data.shed_row(data.n_rows - 1);   
-    data.shed_row(0);
-    arma::mat input = data;
-    utk::train_test_split(data, X_train, X_test, y_train, y_test, 70);
 
     //if unable to load the file then terminate the program
     if(!load_status){
@@ -33,6 +27,10 @@ int main(int argc, char**argv){
     {
         cout<<s<<"  ";
     }
+    cout<<"\n";
+
+    data.shed_row(0);
+    utk::train_test_split(data, X_train, X_test, y_train, y_test, 70);
     cout<<endl;
 
     //saving the test data
@@ -41,14 +39,9 @@ int main(int argc, char**argv){
     // cout<<"Test data saved in test_data.csv"<<endl;
 
     //////training the model
+    utk::normalize_features(X_train);
     std::cout<<"we are now training our model"<<std::endl;
-    // mlpack::KNN knn(X_train);
-    input.shed_row(3);
-    input = arma::trans(input);
-    cout<<"input rows and conls"<<input.n_rows << " "<<input.n_cols<<endl;
-    mlpack::KNN knn(input);
-
-
+    mlpack::KNN knn(X_train);
 
     // The matrices we will store output in.
     arma::Mat<size_t> resultingNeighbors;
